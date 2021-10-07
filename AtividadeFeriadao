@@ -1,0 +1,83 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int contaPalavras(char Frase[]) {
+
+    int words = 1;
+    for (int i = 0; Frase[i] != '\0'; i++) {
+        if (Frase[i] == ' ' && Frase[i + 1] != ' ') {
+            words++;
+        }
+    }
+    return words;
+}
+
+int main()
+{
+    char frase[100];
+
+    cout << "Digite uma frase: ";
+    cin.getline(frase, 100);
+
+    cout << "A quantidade de palavras eh: " << contaPalavras(frase) << ".\n";
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+
+
+void retornaPalavra()
+{
+    int num;
+
+    const char string0[10] = "hoje";
+    const char string1[10] = "amanha";
+    const char string2[10] = "passe";
+    const char string3[10] = "horario";
+    const char string4[10] = "dia";
+    const char string5[10] = "noite";
+
+    cout << "Escolha um numero de 0 a 5: " << endl;
+    cin >> num;
+
+    if (num == 0) {
+        cout << string0 << endl;
+    }
+
+    if (num == 1) {
+        cout << string1 << endl;
+    }
+
+    if (num == 2) {
+        cout << string2 << endl;
+    }
+
+    if (num == 3) {
+        cout << string3 << endl;
+    }
+
+    if (num == 4) {
+        cout << string4 << endl;
+    }
+
+    if (num == 5) {
+        cout << string5 << endl;
+    }
+}
+
+int main() {
+
+    retornaPalavra();
+}
