@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+
+using namespace std;
+
+void extraiNome(string frase, string eliminar)
+{
+    vector<string> nomes{};
+
+    size_t posicao;
+    while ((posicao = frase.find(eliminar)) != string::npos) {
+        nomes.push_back(frase.substr(0, posicao));
+        frase.erase(0, posicao + eliminar.length());
+    }
+    for (const auto& str : nomes) {
+        cout << str << endl;
+    }
+}
+
+void extraiNomeOrdemAlfabetica(string frase, string eliminar)
+{
+    vector<string> nomes{};
+    vector<string> ordenado{};
+    char letra = 'a';
+    char maiuscula = 'A';
+
+    size_t posicao;
+    while ((posicao = frase.find(eliminar)) != string::npos) {
+        nomes.push_back(frase.substr(0, posicao));
+        frase.erase(0, posicao + eliminar.length());
+    }
+
+        for (int j = 0; j <= nomes.size(); j++)
+    {
+        for (int i = 0; i <= nomes.size(); i++)
+        {
+
+            vector<char> compara(nomes[i].begin(), nomes[i].end());
+
+
+            if (compara[j] == letra || compara[j] == maiuscula)
+            {
+                ordenado.push_back(nomes[i]);
+            }
+
+        }
+
+        if (j<=23)
+        {
+            letra++;
+            maiuscula++;
+        }
+        
+    }
+    
+
+    for (const auto& str : ordenado) {
+        cout << str << endl;
+    }
+}
+
+int main() {
+    string frase = "JOAO BEZIAZICINI;BRUNO CUNHA;MARIA DIAS;MATHEUS FREITAS;VICTOR GOMES;GABRIELLA HUPPES;GIOVANA JARDIM;ANTONIO JUNIOR;ANDRE KRUGER;JEAN LOPES;JOAO PLENTZ;ROMULO SARAIVA;MATHEUS SILVEIRA;RODRIGO SILVEIRA;LUCAS SPENGLER;JOAO BEZIAZICINI; BRUNO CUNHA; MARIA DIAS; MATHEUS FREITAS; VICTOR GOMES; GABRIELLA HUPPES; RODRIGO SILVEIRA; LUCAS SPENGLER;JEAN LOPES; JOAO PLENTZ; ROMULO SARAIVA; MATHEUS SILVEIRA; RODRIGO SILVEIRA; LUCAS SPENGLER;MATHEUS FREITAS; GIOVANA JARDIM; ANTONIO JUNIOR; JEAN LOPES; JOAO PLENTZ; ROMULO SARAIVA; MATHEUS SILVEIRA; RODRIGO SILVEIRA;";
+    string eliminar = ";";
+
+    extraiNome(frase, eliminar);
+
+    extraiNomeOrdemAlfabetica(frase, eliminar);
+
+
+
+}
