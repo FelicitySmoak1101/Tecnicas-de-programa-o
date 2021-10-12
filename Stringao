@@ -40,7 +40,7 @@ void extraiNomeOrdemAlfabetica(string frase, string eliminar)
             vector<char> compara(nomes[i].begin(), nomes[i].end());
 
 
-            if (compara[j] == letra || compara[j] == maiuscula)
+            if (compara[0] == letra || compara[0] == maiuscula)
             {
                 ordenado.push_back(nomes[i]);
             }
