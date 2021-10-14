@@ -64,7 +64,7 @@ int main() {
 
     extraiNome(frase, eliminar);
 
-    extraiNomeOrdemAlfabetica(frase, eliminar);
+    //extraiNomeOrdemAlfabetica(frase, eliminar);
 
 
 
