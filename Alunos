@@ -1,0 +1,206 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+
+struct aluno {
+
+    string nome;
+    string curso;
+    int matricula;
+    int nota1;
+    int nota2;
+
+};
+
+
+void cadastroAluno(aluno alunos[], int tamanho) {
+    for (int i = 0; i < tamanho; i++) {
+
+        cout << "Nome do aluno: ";
+        cin >> alunos[i].nome;
+        cout << "Matricula: ";
+        cin >> alunos[i].matricula;
+        cout << "Curso: ";
+        cin >> alunos[i].curso;
+        cout << "\n";
+    }
+
+
+
+}
+
+void cadastroNota(aluno alunos[], int tamanho, int n1n2) {
+
+    int matricula;
+    int nota;
+    cout << " Matricula: " << endl;
+    cin >> matricula;
+
+    for (int i = 0; i < tamanho; i++) {
+
+        if (alunos[i].matricula == matricula) {
+            cout << "Nota do : " << alunos[i].nome << endl;
+            cin >> nota;
+            if (n1n2 == 1) {
+                alunos[i].nota1 = nota;
+
+            }
+            if (n1n2 == 2) {
+                alunos[i].nota2 = nota;
+            }
+        }
+    }
+}
+
+
+void mediaFinal(aluno alunos[], int tamanho) {
+    int mediaFinal;
+    for (int i = 0; i < tamanho; i++) {
+        mediaFinal = (alunos[i].nota1 * 0.4) + (alunos[i].nota2 * 0.6);
+        cout << "A media do aluno " << alunos[i].nome << " = " << mediaFinal << endl;
+        cout << "............\n";
+    }
+}
+
+void listarAluno(aluno informacao[], int tamanho, bool indice, bool notas) {
+
+    for (int i = 0; i < tamanho; i++) {
+        cout << "Aluno: " << informacao[i].nome << (indice ? "\n" : " ");
+        cout << "Matricula: " << informacao[i].matricula << (indice ? "\n" : " ");
+        cout << "Curso: " << informacao[i].curso << (indice ? "\n" : " ");
+        if (notas) {
+            cout << "Nota n1: " << informacao[i].nota1 << (indice ? "\n" : " ");
+            cout << "Nota n2: " << informacao[i].nota2 << endl;
+        }
+        cout << "............\n";
+    }
+}
+
+
+
+
+int selecionaAluno(aluno alunos[], int tamanho) {
+    int matricula;
+    int index = -1;
+    cout << " Matricula: " << endl;
+    cin >> matricula;
+
+    for (int i = 0; i < tamanho; i++) {
+        if (alunos[i].matricula == matricula) {
+            index = i;
+
+        }
+    }
+    return index;
+}
+
+
+
+void lancarTodasNotas(aluno alunos[], int tam) {
+    int i;
+
+    int indice = selecionaAluno(alunos, 10);
+
+    cout << "Nome: " << alunos[indice].nome << endl;
+
+    cout << "Nota 1: ";
+    cin >> alunos[indice].nota1;
+    cout << "Nota 2: ";
+    cin >> alunos[indice].nota2;
+}
+
+void lancarNotasTodosAlunos(aluno alunos[], int tam) {
+
+    for (int i = 0; i < tam; i++) {
+
+        cout << alunos[i].nome << endl;
+        cout << "Nota 1: ";
+        cin >> alunos[i].nota1;
+        cout << "Nota 2: ";
+        cin >> alunos[i].nota2;
+        cout << "............\n";
+
+    }
+
+
+}
+
+int main() {
+    int media;
+    int const TAM = 4;
+    int opcao;
+    aluno alunos[TAM];
+
+    alunos[0].nome = "Kelly Olsen";
+    alunos[0].matricula = 1234;
+    alunos[0].curso = "Ciencias da Computacao";
+    alunos[0].nota1 = 10;
+    alunos[0].nota2 = 8;
+    alunos[1].nome = "Alex Danvers";
+    alunos[1].matricula = 4321;
+    alunos[1].curso = "Medicina";
+    alunos[1].nota1 = 9;
+    alunos[1].nota2 = 10;
+    alunos[2].nome = "Kara Danvers";
+    alunos[2].matricula = 5678;
+    alunos[2].curso = "Jornalismo";
+    alunos[2].nota1 = 8;
+    alunos[2].nota2 = 10;
+    alunos[3].nome = "Barry Allen";
+    alunos[3].matricula = 8765;
+    alunos[3].curso = "Cencia Florense";
+    alunos[3].nota1 = 8;
+    alunos[3].nota2 = 9;
+
+    do {
+        cout << "Digite a opção:\n "
+            "\n  1 - Cadastrar aluno."
+            "\n  2 - Listar alunos. "
+            "\n  3 - Cadastrar Nota 1."
+            "\n  4 - Cadastrar Nota 2. "
+            "\n  5 - Cadastrar nota 1 e nota 2."
+            "\n  6 - Cadastrar nota 1 e nota 2 de todos alunos."
+            "\n  7 - Lista alunos e médias"
+            "\n  0 - Sair\n-> ";
+        cin >> opcao;
+
+        switch (opcao) {
+        case 1:
+            cadastroAluno(alunos, TAM+1);
+            break;
+
+        case 2:
+            listarAluno(alunos, TAM, true,true);
+            break;
+
+        case 3:
+            cadastroNota(alunos, TAM, 1);
+            break;
+
+        case 4:
+            cadastroNota(alunos, TAM, 2);
+            break;
+
+        case 5:
+            lancarTodasNotas(alunos, TAM);
+            break;
+
+        case 6:
+            lancarNotasTodosAlunos(alunos, TAM);
+            break;
+
+        case 7:
+            mediaFinal(alunos, TAM);
+            break;
+
+        case 0:
+            break;
+
+        default:
+            cout << "Voce digitou um numero errado\n";
+        }
+    } while (opcao != 0);
+
+}
