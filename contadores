@@ -1,0 +1,79 @@
+
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <sstream>
+#include <vector>
+#include <iterator>
+#include <algorithm>
+
+using namespace std;
+using std::cout; using std::cin;
+using std::endl; using std::string;
+using std::vector; using std::istringstream;
+using std::stringstream;
+
+
+void contadorCaractere(string frase)
+{
+    frase.length();
+}
+
+void contadorPalavras(string frase)
+{
+    char array[frase.length()+1] ;
+    int contador = 1;
+    strcpy(array, frase.c_str());
+    
+    for (int i = 0; i < sizeof(frase); i++) {
+        if (array[i]==' ')
+        {
+            cout<<array[i]<<"\n";
+            contador ++;
+        }
+    }
+    
+    cout<<frase.length()<<"\n";
+    cout<<array[0]<<"\n";
+    
+
+    cout<<"\nSeu texto tem: "<< contador << " palavras\n";
+}
+
+void contadorRepeticoes(string frase)
+{
+    vector<string> palavras{};
+    string delimitador = " ";
+    size_t tamanho = 0;
+    int contador = 0;
+    
+    while ((tamanho = frase.find(delimitador)) != string::npos) {
+        palavras.push_back(frase.substr(0, tamanho));
+        frase.erase(0, tamanho +delimitador.length());
+    }
+    for(int i = 0; i<palavras.size(); i++)
+    {
+        for(int j = 0; j<palavras.size(); j++)
+        {
+            if(palavras[i]==palavras[j])
+            {
+                contador++;
+                cout<<palavras[i]<< " aparece " << contador << " vezes\n";
+            }
+        }
+    }
+}
+
+int main()
+{
+    string texto;
+
+    cout<<"Digite o texto: ";
+    getline(cin,texto);
+    
+    //contadorCaractere(texto);
+    
+    //contadorPalavras(texto);
+    
+    contadorRepeticoes(texto);
+}
